@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="/public/logo.png" height="100" width="100" alt="logo"/>
+  <img src="/public/assets/images/logo.png" height="100" width="100" alt="logo"/>
   <h1>Tech Tv</h1>
-    <p>Do you love Science & Technology?😍💙 Well, then you are exactly at the best place where you could learn and build your passion & curiosity for Technology with <a href="">Tech Tv</a>! A Video Library which helps you learn technologies & use them to build cool projects! 👨‍💻</p>
+    <p>Do you love Science & Technology?😍💙 Well, then you are exactly at the best place where you could learn and build your passion & curiosity for Technology with <a href="https://techtv.netlify.app/">Tech Tv</a>! A Video Library which helps you learn technologies & use them to build cool projects! 👨‍💻</p>
 </div>
 
 ## How to run the app locally?
@@ -34,7 +34,7 @@ $ npm start
 
 ## Live
 
-[Tech Tv](https://github.com/Devansu-Yadav/TechTv)
+[Tech Tv](https://techtv.netlify.app/)
 
 ## Demo Video
 
