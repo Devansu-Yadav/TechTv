@@ -1,0 +1,22 @@
+:root {
+    /* Major colors */
+    --primary-color: rgb(15 23 42/1);
+    --secondary-color: #001F3F;
+    --accent-color: #008FF5;
+    --accent-darker-color: #0066AF;
+
+    /* Fixed colors for certain properties */
+    --overlay-color: rgba(0,0,0,0.5);
+    --footer-icon-color: #42B0FF;
+    --tabs-bg-color: #B3DFFF;
+    --sidebar-tab-active-color: #294a6b;
+
+    /* Lighter Shades of Major colors */
+    --primary-lighter-color: #314B89;
+    --secondary-lighter-color: #005FBD;
+    --accent-lighter-color: #42B0FF;
+
+    /* Text colors */
+    --heading-txt-color: #f7f7f7;
+    --content-text-color: rgb(226 232 240/1);
+}

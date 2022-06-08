@@ -1,0 +1,100 @@
+.video-grid-2-column {
+    display: grid;
+    grid-template-columns: 250px 4fr;
+    grid-column-gap: 4rem;
+}
+
+.video-grid-3-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-column-gap: 5rem;
+    row-gap: 2rem;
+}
+
+/* ==================> Videos comp <======================= */
+.videos {
+    margin: 1rem 2rem 5rem 0;
+    position: relative;
+}
+
+.video-cards {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.video-cards .zoom {
+    transition: transform 0.7s;
+}
+
+.video-cards .zoom:hover {
+    transform: scale(1.1);
+}
+
+.video-cards .card {
+    width: 28rem;
+    box-shadow: none;
+    background-color: var(--primary-color);
+    border: 1px solid var(--code-bg-color);
+}
+
+.title-and-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.video-cards .card-header {
+    font-size: 2rem;
+    color: var(--heading-txt-color);
+    font-weight: 500;
+    margin-right: 0;
+}
+
+.options-icon {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+    padding-right: 1.4rem;
+    color: var(--content-text-color);
+}
+
+.video-cards .card-title {
+    font-size: 1.8rem;
+    color: var(--content-text-color);
+}
+
+.video-cards .card .card-buttons {
+    border-radius: 1rem;
+    justify-content: space-evenly;
+}
+
+.card-buttons .btn-icon {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    width: fit-content;
+    height: 4rem;
+    background-color: var(--sidebar-tab-active-color);
+}
+
+.btn-icon .like-icon, .btn-icon .share-icon {
+    color: var(--content-text-color);
+}
+
+/* --------------------------------------> Responsive CSS <---------------------------------- */
+@media only screen and (max-width: 600px) {
+    .videos {
+        width: 100%;
+    }
+
+    .video-grid-2-column {
+        grid-template-columns: 1fr;
+    }
+
+    .video-grid-3-column {
+        justify-items: center;
+    }
+
+    .chips {
+        justify-content: center;
+    }
+}

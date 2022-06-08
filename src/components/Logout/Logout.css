@@ -1,0 +1,7 @@
+.hide-logout-btn {
+    display: none;
+}
+
+.logout-btn {
+    color: var(--danger-color);
+}
