@@ -1,0 +1,74 @@
+.form-container {
+    width: 40rem;
+    height: fit-content;
+    margin: 5rem auto;
+    background-color: var(--content-text-color);
+}
+
+.sign-in-form {
+    width: 90%;
+}
+
+.form-heading {
+    color: var(--heading-text-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+.signup-form-fields {
+    width: 100%;
+}
+
+.signup-form-fields .input-label {
+    align-self: flex-start;
+    font-size: 1.6rem;
+    margin-left: 3rem;
+}
+
+.password-input {
+    position: relative;
+    width: 100%;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    top: 8px;
+    right: 25px;
+    padding: 1rem;
+}
+
+.signup-input {
+    width: 80%;
+    color: var(--black-color);
+}
+
+.terms-conditions {
+    font-size: 1.3rem;
+    column-gap: 1rem;
+}
+
+.signup-btn {
+    width: 85%;
+    background-color: var(--secondary-color);
+}
+
+.login-text {
+    font-size: 1.6rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.login-text a {
+    color: var(--accent-color);
+}
+
+/* ----------------------------------------> Responsive CSS <--------------------------------- */
+@media only screen and (max-width: 700px) {
+    .signup-page-nav {
+        justify-content: flex-end;
+    }
+
+    .form-container {
+        width: 31rem;
+    }
+}

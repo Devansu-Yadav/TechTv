@@ -1,0 +1,22 @@
+// Authentication constants
+const USER_LOGIN = "USER_LOGIN";
+const USER_LOGOUT = "USER_LOGOUT";
+
+// Video Filter constants
+const CLEAR_CATEGORY_FILTER = "CLEAR_CATEGORY_FILTER";
+
+// Liked Videos, Watch History, Watch Later, and PlayList Management constants
+const SAVE_USER_LIKED_VIDEOS = "GET_USER_LIKED_VIDEOS";
+const SAVE_USER_WATCH_HISTORY = "GET_USER_WATCH_HISTORY";
+const SAVE_USER_WATCH_LATER = "GET_USER_WATCH_LATER";
+const SAVE_USER_PLAYLISTS = "GET_USER_PLAYLISTS";
+
+export { 
+    USER_LOGIN, 
+    USER_LOGOUT, 
+    CLEAR_CATEGORY_FILTER,
+    SAVE_USER_LIKED_VIDEOS,
+    SAVE_USER_WATCH_HISTORY,
+    SAVE_USER_WATCH_LATER,
+    SAVE_USER_PLAYLISTS
+};

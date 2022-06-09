@@ -8,9 +8,11 @@ import {
     faUserPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useAuth } from "common/context";
 import { SearchBar, LogoutBtn } from "../index";
 
-const NavBar = () => {
+const NavBar = ({ linkActive }) => {
+    const { isUserAuthenticated } = useAuth();
     const userMenuRef = useRef(null);
 
     return (
@@ -33,22 +35,22 @@ const NavBar = () => {
                     <p>User</p>
 
                     <div className="nav-dropdown-menu" ref={userMenuRef}>
-                        <Link className="nav-icon-item flex-row-container" to="/account">
+                        {isUserAuthenticated && <Link className={`nav-icon-item flex-row-container ${ linkActive === "profile" ? "link-active": "" }`} to="/account">
                             <FontAwesomeIcon icon={faUser} className="nav-icon-margin"/>
-                            <div>Profile</div>
-                        </Link>
+                            <div className={`${ linkActive === "profile" ? "link-active-hover": "" }`}>Profile</div>
+                        </Link>}
 
-                        <LogoutBtn display={false} />
+                        <LogoutBtn display={isUserAuthenticated ? true: false} />
                         
-                        <Link className="nav-icon-item flex-row-container" to="/signup">
+                        {!isUserAuthenticated && <Link className={`nav-icon-item flex-row-container signup-tab ${ linkActive === "signup" ? "link-active": "" }`} to="/signup">
                             <FontAwesomeIcon icon={faUserPlus} className="nav-icon-margin"/>
-                            <div>Sign Up</div>
-                        </Link>
+                            <div className={`${ linkActive === "signup" ? "link-active-hover": "" }`}>Sign Up</div>
+                        </Link>}
 
-                        <Link className="nav-icon-item flex-row-container" to="/login">
+                        {!isUserAuthenticated && <Link className={`nav-icon-item flex-row-container ${ linkActive === "login" ? "link-active": "" }`} to="/login">
                             <FontAwesomeIcon icon={faArrowRightToBracket} className="nav-icon-margin"/>
-                            <div>Login</div>
-                        </Link>
+                            <div className={`${ linkActive === "login" ? "link-active-hover": "" }`}>Login</div>
+                        </Link> }
                     </div>                       
                 </div>
             </div>

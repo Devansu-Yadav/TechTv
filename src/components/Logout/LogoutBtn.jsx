@@ -2,11 +2,14 @@ import "./Logout.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useLogoutHandler } from "common/helpers";
 
 const LogoutBtn = ({ display }) => {
+    const { logoutHandler } = useLogoutHandler();
+
     // Initializing User Data and Auth token when logging out
     const logoutBtnClickHandler = () => {
-        console.log("Clicked logout btn");
+        logoutHandler();
     }
 
     return (
