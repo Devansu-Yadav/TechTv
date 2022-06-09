@@ -1,0 +1,50 @@
+.footer-container {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-top: 1px solid var(--code-bg-color);
+}
+
+.footer-header {
+    color: var(--lynx-white);
+    font-size: 2.2rem;
+    margin-top: 1rem;
+}
+
+.footer-header span {
+    color: var(--footer-icon-color);
+}
+
+.social-icons {
+    column-gap: 2rem;
+    padding: 1rem;
+}
+
+.footer-social-item {
+    display: inline-block;
+}
+
+.footer-icon {
+    color: var(--lynx-white);
+    text-decoration: none;
+    font-size: 2.5rem;
+}
+
+.copyright {
+    font-size: 1.6rem;
+    color: var(--lynx-white);
+}
+
+.footer-icon:hover {
+    color: var(--footer-icon-color);
+}
+
+/* -----------------------------------------> Responsive CSS <------------------------------------ */
+@media only screen and (max-width: 522px) {
+    .footer-header {
+        font-size: 1.8rem;
+    }
+
+    .footer-icon {
+        font-size: 2rem;
+    }
+}

@@ -7,21 +7,23 @@ import { v4 as uuid } from "uuid";
 
 export const categories = [
   {
-    _id: uuid(),
-    categoryName: "Computer Programming",
-    description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+    _id: "1",
+    categoryName: "Web Development",
+    description: "Building Ful-Stack Web Apps to solve real-world problems",
   },
   {
-    _id: uuid(),
-    categoryName: "Frontend Development",
-    description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+    _id: "2",
+    categoryName: "Software Engineering",
+    description: "Engineering applications, designing architectures, and designing scalable systems for complex business use-cases",
   },
   {
-    _id: uuid(),
-    categoryName: "Backend Development",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+    _id: "3",
+    categoryName: "DevOps",
+    description: "Deploying scalable systems using Cloud & Cloud-Native approaches",
+  },
+  {
+    _id: "4",
+    categoryName: "Science & Technology",
+    description: "Science encompasses the systematic study of the structure and behaviour of the physical and natural world through observation and experiment, and technology is the application of scientific knowledge for practical purposes.",
   },
 ];

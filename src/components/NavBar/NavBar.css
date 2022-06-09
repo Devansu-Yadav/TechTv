@@ -1,0 +1,122 @@
+.navbar {
+    padding: 1.5rem;
+    background-color: var(--secondary-color);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--code-bg-color);
+}
+
+#nav-logo {
+    margin-left: 1.5rem;
+    width: 20rem;
+    color: var(--accent-color);
+    font-size: 3rem;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+.logo-container {
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.logo-txt {
+    display: inline;
+    padding-right: 0.8rem;
+}
+
+.nav-icons {
+    font-size: 1.6rem;
+    column-gap: 3rem;
+    margin: 0 3rem;
+}
+
+.nav-icon-item {
+    color: var(--content-text-color);
+    cursor: pointer;
+}
+
+.nav-icon-margin {
+    margin-bottom: 0.4rem;
+}
+
+.nav-icons .nav-icon-item:hover {
+    color: var(--accent-color);
+    transition: color 250ms ease-in-out;
+}
+
+.user-profile-avatar {
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.nav-submenu-item {
+    position: relative;
+    cursor: pointer;
+    color: var(--content-text-color);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2;
+    display: none;
+    min-width: 20rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1.6rem;
+    color: var(--content-text-color);
+    text-align: left;
+    list-style: none;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--white-color);
+    border-radius: 0.25rem;
+}
+
+.nav-dropdown-menu.show-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-dropdown-menu .nav-icon-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2rem;
+    font-size: 1.8rem;
+    padding: 1rem;
+    margin-left: 1rem;
+}
+
+.nav-dropdown-menu .nav-icon-item:nth-child(2) {
+    gap: 1.3rem;
+}
+
+/* -----------------------------------------> Responsive CSS <------------------------------------ */
+@media only screen and (max-width: 550px) {
+    #nav-logo {
+        width: fit-content;
+        margin-right: 1rem;
+    }
+
+    .logo-txt {
+        display: none;
+    }
+
+    .nav-icons {
+        margin: 0 1.5rem;
+    }
+}
+
