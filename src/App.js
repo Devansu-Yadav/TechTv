@@ -4,7 +4,8 @@ import { useAuth } from "common/context";
 import { 
 	VideoListingPage,
 	LoginPage,
-	SignUpPage
+	SignUpPage,
+	NotFound404Page
 } from "pages";
 import { MockAPI } from "components";
 
@@ -27,6 +28,7 @@ function App() {
 						<Route path="/signup" element={<Navigate to="/" />} />
 					</>
 				}
+				<Route path="*" element={<NotFound404Page />} />
 			</Routes>
 		</div>
 	);
