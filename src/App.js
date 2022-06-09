@@ -5,7 +5,8 @@ import {
 	VideoListingPage,
 	LoginPage,
 	SignUpPage,
-	NotFound404Page
+	NotFound404Page,
+	LikedVideosPage
 } from "pages";
 import { MockAPI } from "components";
 
@@ -22,10 +23,12 @@ function App() {
 					<>
 						<Route path="/login" element={<LoginPage />} />
 						<Route path="/signup" element={<SignUpPage />} />
+						<Route path="/liked" element={<Navigate to="/login" />} />
 					</> :
 					<>
 						<Route path="/login" element={<Navigate to="/" />} />
 						<Route path="/signup" element={<Navigate to="/" />} />
+						<Route path="/liked" element={<LikedVideosPage />} />
 					</>
 				}
 				<Route path="*" element={<NotFound404Page />} />

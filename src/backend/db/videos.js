@@ -5,7 +5,7 @@
 
 export const videos = [
   {
-    _id: "dpw9EHDh2bM&t",
+    _id: "dpw9EHDh2bM",
     title: "React Today & Tomorrow & 90% Cleaner React With Hooks",
     videoUrl: "https://youtu.be/dpw9EHDh2bM",
     categoryName: "Web Development",
@@ -23,7 +23,7 @@ export const videos = [
     description: "JavaScript programmers like to use words like, “event-loop”, “non-blocking”, “callback”, “asynchronous”, “single-threaded” and “concurrency”.",
   },
   {
-    _id: "t2ypzz6gJm0&list",
+    _id: "t2ypzz6gJm0",
     title: "Learn useRef in 11 Minutes",
     videoUrl: "https://youtu.be/t2ypzz6gJm0",
     categoryName: "Web Development",
@@ -95,7 +95,7 @@ export const videos = [
     description: "Is 45 minutes really the longest anyone can stay in a perfectly silent, pitch-black room?",
   },
   {
-    _id: "uyMtsyzXWd4&t",
+    _id: "uyMtsyzXWd4",
     title: "Inside the black hole image that made history",
     videoUrl: "https://youtu.be/uyMtsyzXWd4",
     categoryName: "Science & Technology",

@@ -2,7 +2,7 @@ import { useLoginHandler } from "./Auth/LoginHandler";
 import { useLogoutHandler } from "./Auth/LogoutHandler";
 import { useSignupHandler } from "./Auth/SignUpHandler";
 import { getUserData } from "./AccountService";
-import { getLikedVideosData } from "./LikeService";
+import { getLikedVideosData, addItemToLikedVideos, removeItemFromLikedVideos } from "./LikeService";
 import { getWatchHistoryData } from "./HistoryService";
 import { getWatchLaterData } from "./WatchLaterService";
 import { getPlaylistsData } from "./PlaylistService";
@@ -15,6 +15,7 @@ import {
     validatePinCode,
     addressFormValidation
 } from "./FormValidation";
+import { useVideoActions } from "./VideoActions";
 
 export {
     useLoginHandler,
@@ -22,6 +23,8 @@ export {
     useSignupHandler,
     getUserData,
     getLikedVideosData,
+    addItemToLikedVideos,
+    removeItemFromLikedVideos,
     getWatchHistoryData,
     getWatchLaterData,
     getPlaylistsData,
@@ -31,5 +34,6 @@ export {
     validateMobileNo, 
     validateAltMobileNo, 
     validatePinCode,
-    addressFormValidation
+    addressFormValidation,
+    useVideoActions
 };

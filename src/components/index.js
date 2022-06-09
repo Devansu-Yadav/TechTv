@@ -6,9 +6,11 @@ import { VideoListing } from "./VideoList/VideoList";
 import { SideBar } from "./SideBar/SideBar";
 import { Footer } from "./Footer/Footer";
 import { VideoListCard } from "./Card/VideoListCard";
+import { CommonVideoCard } from "./Card/CommonVideoCard";
 import { LoginForm } from "./Login/LoginForm";
 import { SignupForm } from "./Signup/SignupForm";
 import { FormError } from "./FormError/FormError";
+import { LikedVideos } from "./LikedVideos/LikedVideos";
 
 export {
     SearchBar,
@@ -19,7 +21,9 @@ export {
     SideBar,
     Footer,
     VideoListCard,
+    CommonVideoCard,
     LoginForm,
     SignupForm,
-    FormError
+    FormError,
+    LikedVideos
 };

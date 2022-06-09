@@ -14,6 +14,16 @@
     background-color: var(--primary-color);
 }
 
+.empty-container-btn {
+    background-color: transparent;
+    color: var(--content-text-color);
+    border: 1px solid var(--accent-color);
+}
+
+.empty-container-btn:hover {
+    background-color: var(--accent-darker-color);
+}
+
 @media only screen and (max-width: 600px) {
     .grid-2-column {
         grid-template-columns: 1fr;
