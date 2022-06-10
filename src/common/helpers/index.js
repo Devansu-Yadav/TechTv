@@ -4,7 +4,7 @@ import { useSignupHandler } from "./Auth/SignUpHandler";
 import { getUserData } from "./AccountService";
 import { getLikedVideosData, addItemToLikedVideos, removeItemFromLikedVideos } from "./LikeService";
 import { getWatchHistoryData, addItemToWatchHistory, removeItemFromWatchHistory, clearWatchHistory } from "./HistoryService";
-import { getWatchLaterData } from "./WatchLaterService";
+import { getWatchLaterData, addItemToWatchLater, removeItemFromWatchLater } from "./WatchLaterService";
 import { getPlaylistsData } from "./PlaylistService";
 import {
     validateOnlyStrings, 
@@ -30,6 +30,8 @@ export {
     removeItemFromWatchHistory,
     clearWatchHistory,
     getWatchLaterData,
+    addItemToWatchLater,
+    removeItemFromWatchLater,
     getPlaylistsData,
     validateOnlyStrings, 
     validateEmail, 

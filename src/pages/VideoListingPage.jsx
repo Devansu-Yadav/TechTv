@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NavBar, VideoListing, Footer } from "components";
+import { NavBar, VideoListing, Footer, VideoListModal } from "components";
 import "styles/VideoListingPage.css";
 
 const VideoListingPage = () => {
@@ -11,6 +11,7 @@ const VideoListingPage = () => {
     return (
         <>
             <NavBar />
+            <VideoListModal />
             <VideoListing />
             <Footer />
         </>

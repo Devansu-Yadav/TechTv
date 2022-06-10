@@ -7,14 +7,18 @@ import {
     removeItemFromLikedVideos,
     addItemToWatchHistory,
     removeItemFromWatchHistory,
-    clearWatchHistory
+    clearWatchHistory,
+    addItemToWatchLater,
+    removeItemFromWatchLater
 } from "./index";
 import { 
     ADD_TO_LIKED_VIDEOS,
     REMOVE_FROM_LIKED_VIDEOS,
     ADD_TO_WATCH_HISTORY,
     REMOVE_FROM_WATCH_HISTORY,
-    CLEAR_WATCH_HISTORY
+    CLEAR_WATCH_HISTORY,
+    ADD_TO_WATCH_LATER,
+    REMOVE_FROM_WATCH_LATER
 } from "common/constants";
 
 const useVideoActions = () => {
@@ -30,6 +34,11 @@ const useVideoActions = () => {
     // Check if video is already in History or not
     const isVideoInWatchHistory = (videoId) => {
         return userData.history.find(video => video._id === videoId) ? true: false;
+    }
+
+    // Check if Item is in Watch Later or not
+    const isVideoInWatchLater = (videoId) => {
+        return userData.watchlater.find(video => video._id === videoId) ? true: false;
     }
 
     // Used to toggle Liked Videos on VideoListing page to add or Remove a video from Liked Videos.
@@ -119,13 +128,53 @@ const useVideoActions = () => {
         }
     }
 
+    // Used to toggle Watch Later on VideoListing page to add or Remove a video from Watch Later.
+    const toggleWatchLater = async (event, video) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else {
+            const videoInWatchLater = isVideoInWatchLater(video._id);
+            const watchLaterResponse = !videoInWatchLater 
+            ? await addItemToWatchLater(userAuthToken, video) : await removeItemFromWatchLater(userAuthToken, video._id);
+
+            console.log("Updated Watch Later ", watchLaterResponse.watchlater);
+            userDataDispatch({ 
+                type: !videoInWatchLater ? ADD_TO_WATCH_LATER: REMOVE_FROM_WATCH_LATER, 
+                payload: video 
+            });
+        }
+    }
+
+    // For Removing Video from Watch Later on Watch Later page
+    const removeVideoOnWatchLaterPage = async (event, video) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else if(isVideoInWatchLater(video._id)) {
+            const watchLaterResponse = await removeItemFromWatchLater(userAuthToken, video._id);
+            console.log("Removed video from Liked Videos list!", watchLaterResponse.watchlater);
+
+            userDataDispatch({
+                type: REMOVE_FROM_WATCH_LATER,
+                payload: video
+            });
+        }
+    } 
+
     return { 
         isVideoInLikedVideos,
+        isVideoInWatchHistory,
+        isVideoInWatchLater,
         toggleLikedVideo,
         removeLikedVideoOnLikedVideosPage,
         addVideoToWatchHistory,
         removeVideoFromWatchHistory,
-        clearVideoWatchHistory
+        clearVideoWatchHistory,
+        toggleWatchLater,
+        removeVideoOnWatchLaterPage
     };
 }
 

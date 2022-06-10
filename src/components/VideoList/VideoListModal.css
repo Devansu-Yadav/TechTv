@@ -1,0 +1,94 @@
+.modal-wrapper {
+    background-color: var(--overlay-color);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.modal-wrapper.show {
+    display: block;
+}
+
+.videoList-modal {
+    background-color: var(--primary-color);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    max-height: 20rem;
+    min-width: 10rem;
+    padding: 1.5rem;
+    position: fixed;
+    row-gap: 1rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 25rem;
+    z-index: 3;
+}
+  
+.videoList-modal-container {
+    max-height: 14rem;
+    overflow-y: scroll;
+    align-items: center;
+}
+
+.videoList-modal-header {
+    justify-content: space-between;
+    font-size: 1.6rem;
+    color: var(--content-text-color);
+}
+
+.videoList-modal-heading {
+    align-items: baseline;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 1rem;
+    row-gap: 1rem;
+}
+
+.videoList-modal-close-btn {
+    cursor: pointer;
+}
+
+.watchlater-checkbox {
+    padding-right: 0.5rem;
+}
+
+.checkbox-label {
+    padding-left: 1rem;
+    font-size: 1.6rem;
+    color: var(--content-text-color);
+}
+
+.input-full-width {
+    width: 100%;
+}
+
+.disabled-cursor {
+    cursor: not-allowed;
+}
+
+input[type="checkbox"],
+.checkbox-label {
+    cursor: pointer;
+}
+
+.create-playlist {
+    padding-top: 1rem;
+}
+
+.new-playlist-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.playlist-header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}

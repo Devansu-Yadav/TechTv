@@ -1,0 +1,69 @@
+.watch-later-grid-3-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    grid-column-gap: 3rem;
+    row-gap: 2rem;
+}
+
+.watch-later-heading {
+    width: max-content;
+    margin: 2rem 1rem;
+    padding: 1rem 0;
+    color: var(--content-text-color);
+    column-gap: 2rem;
+}
+
+.watch-later-count {
+    font-size: 2rem;
+}
+
+.watch-later-empty-container {
+    display: none;
+    width: 80%;
+    padding: 2rem;
+    row-gap: 1rem;
+    margin: auto;
+}
+
+.watch-later-empty-container.show {
+    display: flex;
+}
+
+.watch-later-empty-heading {
+    font-size: 2.4rem;
+    color: var(--content-text-color);
+}
+
+.watch-later-cards {
+    margin-top: 5rem;
+    margin-bottom: 7rem;
+}
+
+.watch-later-cards.empty {
+    margin: 0;
+}
+
+/* ---------------------------------------> Responsive CSS <---------------------------------- */
+@media only screen and (max-width: 600px) {
+    .watch-later-heading {
+        text-align: center;
+        margin: 2rem auto;
+    }
+
+    .watch-later-cards {
+        margin-top: 3rem;
+    }
+
+    .watch-later-grid-3-column {
+        justify-items: center;
+    }
+
+    .watch-later-empty-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .watch-later-empty-heading {
+        font-size: 1.8rem;
+    }
+}

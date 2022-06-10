@@ -4,9 +4,11 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faThumbsUp as faThumbsUpFilled } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player/youtube";
 import { useVideoActions } from "common/helpers";
+import { useVideosData } from "common/context";
 
 const VideoListCard = ({ videoData, className }) => {
     const { isVideoInLikedVideos, toggleLikedVideo, addVideoToWatchHistory } = useVideoActions();
+    const { setVideoListModal, setCurrentVideo } = useVideosData();
 
     return (
         <div className={`card space-S ${className}`}>
@@ -22,7 +24,11 @@ const VideoListCard = ({ videoData, className }) => {
 
             <div className="title-and-options">
                 <div className="card-header">{videoData.title}</div>
-                <FontAwesomeIcon icon={faEllipsisVertical} className="options-icon" />
+                <FontAwesomeIcon icon={faEllipsisVertical} className="options-icon" onClick={(event) => {
+                    event.preventDefault();
+                    setVideoListModal(true);
+                    setCurrentVideo(videoData);
+                }} />
             </div>
 
             <div className="card-title">{videoData.categoryName}</div>
