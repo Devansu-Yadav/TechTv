@@ -8,7 +8,8 @@ import {
 	NotFound404Page,
 	LikedVideosPage,
 	WatchHistoryPage,
-	WatchLaterPage
+	WatchLaterPage,
+	PlayListPage
 } from "pages";
 import { MockAPI } from "components";
 
@@ -28,6 +29,8 @@ function App() {
 						<Route path="/liked" element={<Navigate to="/login" />} />
 						<Route path="/history" element={<Navigate to="/login" />} />
 						<Route path="/watchlater" element={<Navigate to="/login" />} />
+						<Route path="/playlist" element={<Navigate to="/login" />} />
+						<Route path="/playlist/:playlistId" element={<Navigate to="/login" />} />
 					</> :
 					<>
 						<Route path="/login" element={<Navigate to="/" />} />
@@ -35,6 +38,8 @@ function App() {
 						<Route path="/liked" element={<LikedVideosPage />} />
 						<Route path="/history" element={<WatchHistoryPage />} />
 						<Route path="/watchlater" element={<WatchLaterPage />} />
+						<Route path="/playlist" element={<PlayListPage />} />
+						{/* <Route path="/playlist/:playlistId" element={<SinglePlayListPage />} /> */}
 					</>
 				}
 				<Route path="*" element={<NotFound404Page />} />

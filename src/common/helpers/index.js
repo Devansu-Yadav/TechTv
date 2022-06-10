@@ -5,7 +5,14 @@ import { getUserData } from "./AccountService";
 import { getLikedVideosData, addItemToLikedVideos, removeItemFromLikedVideos } from "./LikeService";
 import { getWatchHistoryData, addItemToWatchHistory, removeItemFromWatchHistory, clearWatchHistory } from "./HistoryService";
 import { getWatchLaterData, addItemToWatchLater, removeItemFromWatchLater } from "./WatchLaterService";
-import { getPlaylistsData } from "./PlaylistService";
+import { 
+    getPlaylistsData, 
+    getVideosFromPlaylist, 
+    addNewPlayList,
+    removePlayList,
+    addVideoToPlayList,
+    removeVideoFromPlayList,
+} from "./PlaylistService";
 import {
     validateOnlyStrings, 
     validateEmail, 
@@ -33,6 +40,11 @@ export {
     addItemToWatchLater,
     removeItemFromWatchLater,
     getPlaylistsData,
+    getVideosFromPlaylist,
+    addNewPlayList,
+    removePlayList,
+    addVideoToPlayList,
+    removeVideoFromPlayList,
     validateOnlyStrings, 
     validateEmail, 
     validatePassword, 

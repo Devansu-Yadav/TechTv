@@ -54,7 +54,7 @@
     cursor: pointer;
 }
 
-.watchlater-checkbox {
+.watchlater-checkbox, .playlist-checkbox {
     padding-right: 0.5rem;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .input-full-width {
-    width: 100%;
+    width: 91%;
 }
 
 .disabled-cursor {
@@ -91,4 +91,26 @@ input[type="checkbox"],
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+}
+
+.playlist {
+    align-items: baseline;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+    color: var(--content-text-color);
+}
+
+.create-playlist-btn {
+    background-color: var(--accent-color);
+}
+
+.plus-icon {
+    padding-right: 0.5rem;
+}
+
+.form-name-label {
+    font-size: 1.6rem;
+    color: var(--content-text-color);
 }
