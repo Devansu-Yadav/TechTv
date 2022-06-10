@@ -1,15 +1,23 @@
-import { useAuth, useVideosData } from "common/context";
+import { useAuth, useVideosData, useUserData } from "common/context";
 import { useVideoActions } from "common/helpers";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "./VideoListModal.css";
 
 const VideoListModal = () => {
     const { videoListModal, setVideoListModal, currentVideo } = useVideosData();
-    const { isVideoInWatchLater, toggleWatchLater } = useVideoActions();
+    const { userData } = useUserData();
 
+    const { 
+        isVideoInWatchLater, 
+        toggleWatchLater, 
+        addNewPlayListOnVideoListingPage,
+        toggleVideoToPlayListOnVideoListingPage,
+        isVideoInPlayList
+    } = useVideoActions();
+    
     const [newPlaylist, setNewPlaylist] = useState(false);
     const [playlistName, setPlaylistName] = useState("");
     const [disableWatchLater, setDisableWatchLater] = useState(false);
@@ -17,6 +25,19 @@ const VideoListModal = () => {
     const [disableCreate, setDisableCreate] = useState(false);
     const navigate = useNavigate();
     const { userAuthToken } = useAuth();
+
+    const createPlaylistHandler = (e) => {
+        e.preventDefault();
+
+        addNewPlayListOnVideoListingPage(e, { title: playlistName }, setDisableCreate);
+        setNewPlaylist(false);
+    };
+
+    const videoInPlaylistHandler = (e, playlist) => {
+        toggleVideoToPlayListOnVideoListingPage(e, playlist, currentVideo);
+
+        isVideoInPlayList(playlist._id, currentVideo._id) ? setDisableCheckbox(true): setDisableCheckbox(false);
+    }
 
     return (
         <div className={`modal-wrapper ${videoListModal ? "show" : ""}`}>
@@ -55,6 +76,63 @@ const VideoListModal = () => {
                         </label>
                     </>
                 </div>
+
+                { userData.playlists && userData.playlists.map((playlist) => (
+                        <div key={playlist._id} className="playlist">
+                            { console.log(playlist) }
+                            <input
+                                type="checkbox"
+                                id={playlist._id}
+                                checked={isVideoInPlayList(playlist._id, currentVideo._id)}
+                                className="playlist-checkbox input-checkbox"
+                                disabled={disableCheckbox}
+                                onChange={(e) => videoInPlaylistHandler(e, playlist)}
+                            />
+                            <label htmlFor={playlist._id} className="checkbox-label">
+                                {playlist.title}
+                            </label>
+                        </div>
+                ))}
+
+                { newPlaylist ? (
+                <form onSubmit={(e) => createPlaylistHandler(e)}>
+                    <div className="new-playlist-container">
+                    <label className="form-name-label" htmlFor="new-playlist-name">Name</label>
+                    <input
+                        type="text"
+                        id="new-playlist-name"
+                        placeholder="Enter Playlist Name"
+                        className="input-primary input-full-width"
+                        onChange={(e) => setPlaylistName(e.target.value.trim())}
+                    />
+                    <button
+                        type="submit"
+                        className={`btn btn-primary create-playlist-btn ${
+                        playlistName === "" ? "disabled-cursor" : ""
+                        }`}
+                        disabled={playlistName === "" || disableCreate}
+                    >
+                        Create
+                    </button>
+                    </div>
+                </form>
+                ) : (
+                <div
+                    className="playlist create-playlist"
+                    onClick={() => {
+                    if (userAuthToken) setNewPlaylist(true);
+                    else {
+                        setVideoListModal(false);
+                        navigate("/login");
+                    }
+                    }}
+                >
+                    <span className="plus-icon">
+                        <FontAwesomeIcon icon={faPlus} />
+                    </span>
+                    Create New Playlist
+                </div>
+                )}
             </div>
         </div>
     );

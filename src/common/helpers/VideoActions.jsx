@@ -9,7 +9,12 @@ import {
     removeItemFromWatchHistory,
     clearWatchHistory,
     addItemToWatchLater,
-    removeItemFromWatchLater
+    removeItemFromWatchLater,
+    addNewPlayList,
+    removePlayList,
+    getVideosFromPlaylist,
+    addVideoToPlayList,
+    removeVideoFromPlayList
 } from "./index";
 import { 
     ADD_TO_LIKED_VIDEOS,
@@ -18,7 +23,11 @@ import {
     REMOVE_FROM_WATCH_HISTORY,
     CLEAR_WATCH_HISTORY,
     ADD_TO_WATCH_LATER,
-    REMOVE_FROM_WATCH_LATER
+    REMOVE_FROM_WATCH_LATER,
+    ADD_NEW_PLAYLIST,
+    REMOVE_PLAYLIST,
+    ADD_VIDEO_TO_PLAYLIST,
+    REMOVE_VIDEO_FROM_PLAYLIST
 } from "common/constants";
 
 const useVideoActions = () => {
@@ -39,6 +48,17 @@ const useVideoActions = () => {
     // Check if Item is in Watch Later or not
     const isVideoInWatchLater = (videoId) => {
         return userData.watchlater.find(video => video._id === videoId) ? true: false;
+    }
+
+    // Check if a playlist is in Playlists or not
+    const isPlayListInPlaylists = (playListName) => {
+        return userData.playlists.find(playlist => playlist.title === playListName) ? true: false;
+    }
+
+    // Check if video is in a playlist or not.
+    const isVideoInPlayList = (playListId, videoId) => {
+        const playlist = userData.playlists.find(playlist => playlist._id === playListId);
+        return playlist.videos.find(video => video._id === videoId) ? true : false;
     }
 
     // Used to toggle Liked Videos on VideoListing page to add or Remove a video from Liked Videos.
@@ -164,6 +184,98 @@ const useVideoActions = () => {
         }
     } 
 
+    // For creating a new playlist on Video Listing page
+    const addNewPlayListOnVideoListingPage = async (event, playlist, setDisableCreate) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else if(!isPlayListInPlaylists(playlist.title)) {
+            setDisableCreate(true);
+            const playlistResponse = await addNewPlayList(userAuthToken, playlist, setDisableCreate);
+            console.log("Added new playlist - ", playlistResponse.playlists);
+
+            userDataDispatch({
+                type: ADD_NEW_PLAYLIST,
+                payload: playlistResponse.playlists[playlistResponse.playlists.length - 1]
+            });
+        }
+    }
+
+    // For Removing a playlist on Playlists page
+    const removePlayListOnPlayListPage = async (event, playlist) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else if(isPlayListInPlaylists(playlist.title)) {
+            const playlistResponse = await removePlayList(userAuthToken, playlist._id);
+            console.log("Removed playlist from playlists!", playlistResponse.playlists);
+
+            userDataDispatch({
+                type: REMOVE_PLAYLIST,
+                payload: playlist
+            });
+        }
+    } 
+
+    // Fetch all videos in a Playlist on Single Playlist page
+    const getAllVideosInPlayList = async (event, playlist) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else if(isPlayListInPlaylists(playlist.title)) {
+            const playListResponse = await getVideosFromPlaylist(userAuthToken, playlist._id);
+            console.log("Fetched all videos from the playlist", playListResponse.playlist);
+
+            return playListResponse.playlist;
+        }
+    }
+
+    // Add/Remove a video to a playlist on Video Listing page
+    const toggleVideoToPlayListOnVideoListingPage = async (event, playlist, video) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else if(isPlayListInPlaylists(playlist.title)) {
+            const playlistResponse = !isVideoInPlayList(playlist._id, video._id) 
+            ? await addVideoToPlayList(userAuthToken, video, playlist._id) 
+            : await removeVideoFromPlayList(userAuthToken, playlist._id, video._id);
+
+            console.log("Added a video to playlist - ", playlistResponse.playlists);
+
+            userDataDispatch({
+                type: !isVideoInPlayList(playlist._id, video._id) ? ADD_VIDEO_TO_PLAYLIST : REMOVE_VIDEO_FROM_PLAYLIST,
+                payload: {
+                    video,
+                    _id: playlist._id
+                }
+            });
+        }
+    }
+
+    // Remove a video from a playlist on Single Playlist page
+    const removeVideoOnSinglePlayListPage = async (event, playlist, video) => {
+        event.preventDefault();
+
+        if(!userAuthToken) {
+            navigate("/login");
+        } else if(isPlayListInPlaylists(playlist.title)) {
+            const playListResponse = await removeVideoFromPlayList(userAuthToken, playlist._id, video._id);
+            console.log("Removed video from playlist", playListResponse.playlists);
+
+            userDataDispatch({
+                type: REMOVE_VIDEO_FROM_PLAYLIST,
+                payload: {
+                    video,
+                    _id: playlist._id
+                }
+            });
+        }
+    }
+
     return { 
         isVideoInLikedVideos,
         isVideoInWatchHistory,
@@ -174,7 +286,14 @@ const useVideoActions = () => {
         removeVideoFromWatchHistory,
         clearVideoWatchHistory,
         toggleWatchLater,
-        removeVideoOnWatchLaterPage
+        removeVideoOnWatchLaterPage,
+        addNewPlayListOnVideoListingPage,
+        removePlayListOnPlayListPage,
+        getAllVideosInPlayList,
+        toggleVideoToPlayListOnVideoListingPage,
+        removeVideoOnSinglePlayListPage,
+        isPlayListInPlaylists,
+        isVideoInPlayList
     };
 }
 

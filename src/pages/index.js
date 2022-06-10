@@ -5,6 +5,7 @@ import { NotFound404Page } from "./NotFound404Page";
 import { LikedVideosPage } from "./LikedVideosPage";
 import { WatchHistoryPage } from "./HistoryPage";
 import { WatchLaterPage } from "./WatchLaterPage";
+import { PlayListPage } from "./PlayListPage";
 
 export {
     VideoListingPage,
@@ -13,5 +14,6 @@ export {
     NotFound404Page,
     LikedVideosPage,
     WatchHistoryPage,
-    WatchLaterPage
+    WatchLaterPage,
+    PlayListPage
 };
