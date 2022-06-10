@@ -5,7 +5,9 @@ import {
     SAVE_USER_LIKED_VIDEOS,
     SAVE_USER_WATCH_HISTORY,
     SAVE_USER_WATCH_LATER,
-    SAVE_USER_PLAYLISTS
+    SAVE_USER_PLAYLISTS,
+    ADD_TO_LIKED_VIDEOS,
+    REMOVE_FROM_LIKED_VIDEOS
 } from "common/constants";
 
 import { 
@@ -63,6 +65,16 @@ const UserDataProvider = ({ children }) => {
                 return {
                     ...state,
                     liked: [...action.payload]
+                }
+            case ADD_TO_LIKED_VIDEOS:
+                return {
+                    ...state,
+                    liked: [...state.liked, action.payload]
+                }
+            case REMOVE_FROM_LIKED_VIDEOS:
+                return {
+                    ...state,
+                    liked: [...state.liked.filter(item => item._id !== action.payload._id)]
                 }
             case SAVE_USER_WATCH_HISTORY:
                 return {
