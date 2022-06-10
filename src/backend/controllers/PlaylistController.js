@@ -10,7 +10,7 @@ import { v4 as uuid } from "uuid";
 
 /**
  * This handler handles getting all user's playlists.
- * send GET Request at /api/user/playlist
+ * send GET Request at /api/user/playlists
  * */
 export const getAllPlaylistsHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
@@ -47,6 +47,7 @@ export const addNewPlaylistHandler = function (schema, request) {
   if (user) {
     const { playlist } = JSON.parse(request.requestBody);
     user.playlists.push({ ...playlist, videos: [], _id: uuid() });
+    this.db.users.update({ _id: user._id }, { playlists: user.playlists });
     return new Response(201, {}, { playlists: user.playlists });
   }
   return new Response(
@@ -70,7 +71,7 @@ export const removePlaylistHandler = function (schema, request) {
     const filteredPlaylists = user.playlists.filter(
       (item) => item._id !== playlistId
     );
-    this.db.users.update({ playlists: filteredPlaylists });
+    this.db.users.update({ _id: user._id }, { playlists: filteredPlaylists });
     return new Response(200, {}, { playlists: filteredPlaylists });
   }
   return new Response(
@@ -121,6 +122,7 @@ export const addVideoToPlaylistHandler = function (schema, request) {
       );
     }
     playlist.videos.push(video);
+    this.db.users.update({ _id: user._id }, { playlists: user.playlists });
     return new Response(201, {}, { playlist });
   }
   return new Response(
@@ -145,6 +147,7 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
       (item) => item._id !== videoId
     );
     playlist.videos = filteredVideos;
+    this.db.users.update({ _id: user._id }, { playlists: user.playlists });
     return new Response(200, {}, { playlist });
   }
   return new Response(

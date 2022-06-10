@@ -15,6 +15,10 @@
     color: var(--content-text-color);
 }
 
+.input-search::placeholder {
+    color: var(--content-text-color);
+}
+
 .search-btn {
     outline: none;
     border: none;

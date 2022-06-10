@@ -8,7 +8,7 @@ const VideoListing = () => {
     const { videoData, videoCategoryData } = useVideosData();
 
     return (
-        <main className="main-container video-grid-2-column dark-container-bg">
+        <main className="main-container grid-2-column dark-container-bg">
             {/* SideBar */}
             <SideBar activeTab={"Home"} />
 
@@ -20,7 +20,7 @@ const VideoListing = () => {
 
                     { videoCategoryData.map(category => {
                         return (
-                            <span className="chip">{category.categoryName}</span>
+                            <span className="chip" key={category._id}>{category.categoryName}</span>
                         );
                     })}
                 </div>

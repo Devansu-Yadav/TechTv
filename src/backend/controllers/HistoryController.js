@@ -54,7 +54,7 @@ export const addVideoToHistoryHandler = function (schema, request) {
       );
     }
     const { video } = JSON.parse(request.requestBody);
-    if (user.history.some((item) => item.id === video.id)) {
+    if (user.history.some((item) => item._id === video._id)) {
       return new Response(
         409,
         {},
@@ -64,6 +64,7 @@ export const addVideoToHistoryHandler = function (schema, request) {
       );
     }
     user.history.push(video);
+    this.db.users.update({ _id: user._id }, { likes: user.history });
     return new Response(201, {}, { history: user.history });
   } catch (error) {
     return new Response(
@@ -95,7 +96,7 @@ export const removeVideoFromHistoryHandler = function (schema, request) {
     }
     const videoId = request.params.videoId;
     const filteredHistory = user.history.filter((item) => item._id !== videoId);
-    this.db.users.update({ history: filteredHistory });
+    this.db.users.update({ _id: user._id }, { history: filteredHistory });
     return new Response(200, {}, { history: filteredHistory });
   } catch (error) {
     return new Response(
@@ -125,7 +126,7 @@ export const clearHistoryHandler = function (schema, request) {
         }
       );
     }
-    this.db.users.update({ history: [] });
+    this.db.users.update({ _id: user._id }, { history: [] });
     return new Response(200, {}, { history: [] });
   } catch (error) {
     return new Response(

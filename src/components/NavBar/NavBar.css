@@ -37,6 +37,10 @@
     margin: 0 3rem;
 }
 
+.nav-icons .link-active {
+    color: var(--accent-color);
+}
+
 .nav-icon-item {
     color: var(--content-text-color);
     cursor: pointer;
@@ -100,7 +104,7 @@
     margin-left: 1rem;
 }
 
-.nav-dropdown-menu .nav-icon-item:nth-child(2) {
+.nav-dropdown-menu .signup-tab {
     gap: 1.3rem;
 }
 
