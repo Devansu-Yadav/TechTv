@@ -64,7 +64,7 @@ export const addVideoToHistoryHandler = function (schema, request) {
       );
     }
     user.history.push(video);
-    this.db.users.update({ _id: user._id }, { likes: user.history });
+    this.db.users.update({ _id: user._id }, { history: user.history });
     return new Response(201, {}, { history: user.history });
   } catch (error) {
     return new Response(

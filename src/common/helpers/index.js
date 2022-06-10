@@ -3,7 +3,7 @@ import { useLogoutHandler } from "./Auth/LogoutHandler";
 import { useSignupHandler } from "./Auth/SignUpHandler";
 import { getUserData } from "./AccountService";
 import { getLikedVideosData, addItemToLikedVideos, removeItemFromLikedVideos } from "./LikeService";
-import { getWatchHistoryData } from "./HistoryService";
+import { getWatchHistoryData, addItemToWatchHistory, removeItemFromWatchHistory, clearWatchHistory } from "./HistoryService";
 import { getWatchLaterData } from "./WatchLaterService";
 import { getPlaylistsData } from "./PlaylistService";
 import {
@@ -26,6 +26,9 @@ export {
     addItemToLikedVideos,
     removeItemFromLikedVideos,
     getWatchHistoryData,
+    addItemToWatchHistory,
+    removeItemFromWatchHistory,
+    clearWatchHistory,
     getWatchLaterData,
     getPlaylistsData,
     validateOnlyStrings, 

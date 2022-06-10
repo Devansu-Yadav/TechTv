@@ -5,12 +5,14 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 
 const CommonVideoCard = ({ videoData, category, className }) => {
-    const { removeLikedVideoOnLikedVideosPage } = useVideoActions();
+    const { removeLikedVideoOnLikedVideosPage, removeVideoFromWatchHistory } = useVideoActions();
     const cardRef = useRef(null);
 
     const deleteVideoCardHandler = (event) => {
         if(category === "Liked") {
             removeLikedVideoOnLikedVideosPage(event, videoData);
+        } else if(category === "History") {
+            removeVideoFromWatchHistory(event, videoData);
         }
         cardRef.current.classList.add("video-card-display-none");
     }
