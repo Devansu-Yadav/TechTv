@@ -6,7 +6,11 @@ const VideoDataContext = createContext({
     setVideoData: () => {},
     videoCategoryData: [],
     setVideoCategoryData: () => {},
-    getSingleVideoData: () => {}
+    getSingleVideoData: () => {},
+    videoListModal: false,
+    setVideoListModal: () => {},
+    currentVideo: {},
+    setCurrentVideo: () => {}
 });
 
 const useVideosData = () => useContext(VideoDataContext);
@@ -14,6 +18,8 @@ const useVideosData = () => useContext(VideoDataContext);
 const VideoDataProvider = ({ children }) => {
     const [videoData, setVideoData] = useState([]);
     const [videoCategoryData, setVideoCategoryData] = useState([]);
+    const [videoListModal, setVideoListModal] = useState(false);
+    const [currentVideo, setCurrentVideo] = useState({});
 
     useEffect(() => {
         const getVideosData = async () => {
@@ -58,7 +64,11 @@ const VideoDataProvider = ({ children }) => {
             setVideoData, 
             videoCategoryData, 
             setVideoCategoryData, 
-            getSingleVideoData
+            getSingleVideoData,
+            videoListModal,
+            setVideoListModal,
+            currentVideo,
+            setCurrentVideo
         }}>
         { children }
     </VideoDataContext.Provider>

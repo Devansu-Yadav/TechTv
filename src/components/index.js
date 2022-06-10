@@ -3,6 +3,7 @@ import { LogoutBtn } from "./Logout/LogoutBtn";
 import { NavBar } from "./NavBar/NavBar";
 import { MockAPI } from "./MockAPI/MockAPI";
 import { VideoListing } from "./VideoList/VideoList";
+import { VideoListModal } from "./VideoList/VideoListModal";
 import { SideBar } from "./SideBar/SideBar";
 import { Footer } from "./Footer/Footer";
 import { VideoListCard } from "./Card/VideoListCard";
@@ -12,6 +13,7 @@ import { SignupForm } from "./Signup/SignupForm";
 import { FormError } from "./FormError/FormError";
 import { LikedVideos } from "./LikedVideos/LikedVideos";
 import { History } from "./WatchHistory/History";
+import { WatchLater } from "./WatchLater/WatchLater";
 
 export {
     SearchBar,
@@ -19,6 +21,7 @@ export {
     NavBar,
     MockAPI,
     VideoListing,
+    VideoListModal,
     SideBar,
     Footer,
     VideoListCard,
@@ -27,5 +30,6 @@ export {
     SignupForm,
     FormError,
     LikedVideos,
-    History
+    History,
+    WatchLater
 };

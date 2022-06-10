@@ -5,6 +5,8 @@ import {
     SAVE_USER_LIKED_VIDEOS,
     SAVE_USER_WATCH_HISTORY,
     SAVE_USER_WATCH_LATER,
+    ADD_TO_WATCH_LATER,
+    REMOVE_FROM_WATCH_LATER,
     SAVE_USER_PLAYLISTS,
     ADD_TO_LIKED_VIDEOS,
     REMOVE_FROM_LIKED_VIDEOS,
@@ -103,6 +105,16 @@ const UserDataProvider = ({ children }) => {
                 return {
                     ...state,
                     watchlater: [...action.payload]
+                }
+            case ADD_TO_WATCH_LATER:
+                return {
+                    ...state,
+                    watchlater: [...state.watchlater, action.payload]
+                }
+            case REMOVE_FROM_WATCH_LATER:
+                return {
+                    ...state,
+                    watchlater: [...state.watchlater.filter(item => item._id !== action.payload._id)]
                 }
             case SAVE_USER_PLAYLISTS:
                 return {
