@@ -56,8 +56,8 @@ const VideoListModal = () => {
                     />
                 </div>
 
-                <div className="videoList-modal-container flex-row-container">
-                    <>
+                <div className="videoList-modal-container flex-col-container">
+                    <div className="watch-later-container flex-row-container">
                         <input
                             type="checkbox"
                             id="watchLater"
@@ -74,12 +74,10 @@ const VideoListModal = () => {
                         <label htmlFor="watchLater" className="checkbox-label">
                             Watch Later
                         </label>
-                    </>
-                </div>
+                    </div>
 
-                { userData.playlists && userData.playlists.map((playlist) => (
+                    { userData.playlists.map((playlist) => (
                         <div key={playlist._id} className="playlist">
-                            { console.log(playlist) }
                             <input
                                 type="checkbox"
                                 id={playlist._id}
@@ -92,7 +90,8 @@ const VideoListModal = () => {
                                 {playlist.title}
                             </label>
                         </div>
-                ))}
+                    ))}
+                </div>
 
                 { newPlaylist ? (
                 <form onSubmit={(e) => createPlaylistHandler(e)}>

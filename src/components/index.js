@@ -16,6 +16,7 @@ import { LikedVideos } from "./LikedVideos/LikedVideos";
 import { History } from "./WatchHistory/History";
 import { WatchLater } from "./WatchLater/WatchLater";
 import { PlayList } from "./PlayList/PlayList";
+import { SinglePlayList } from "./PlayList/SinglePlayList";
 
 export {
     SearchBar,
@@ -35,5 +36,6 @@ export {
     LikedVideos,
     History,
     WatchLater,
-    PlayList
+    PlayList,
+    SinglePlayList
 };

@@ -36,8 +36,8 @@ const PlayList = () => {
                 <div className={`playlist-cards ${showEmptyPlayList ? "empty": ""} playlist-grid-3-column`}>
                     { userData.playlists.map(playlist => {
                         return (
-                            <Link to={`/playlist/${playlist._id}`}>
-                                <PlayListCard playListData={playlist} className="zoom" key={playlist._id} />
+                            <Link key={playlist._id} to={`/playlist/${playlist._id}`}>
+                                <PlayListCard playListData={playlist} className="zoom" />
                             </Link>
                         );
                     })}
