@@ -16,8 +16,8 @@ const PlayListCard = ({ playListData, className }) => {
     return (
         <div className={`card space-S ${className}`} ref={cardRef}>
             <div className="card-img">
-                <img src={ !playListData.length ? `https://i.ytimg.com/vi/no_thumbnail.jpg` : `https://i.ytimg.com/vi/${playListData.videos[0]._id}/0.jpg`} alt="video thumbnail" />
-                <div className="videos-count-container center-flex-col-container">
+                <img src={ !playListData.videos.length ? `https://i.ytimg.com/vi/no_thumbnail.jpg` : `https://i.ytimg.com/vi/${playListData.videos[0]._id}/0.jpg`} alt="video thumbnail" />
+                <div className="videos-count-container centered-flex-col-container">
                     <div className="video-count">{playListData.videos.length}</div>
                     <img className="playlist-icon" src="https://res.cloudinary.com/bluekart/image/upload/v1654674372/add-to-playlist-icon_ojjers.png" alt="video count" />
                 </div>

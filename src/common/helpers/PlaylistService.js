@@ -19,6 +19,7 @@ const addNewPlayList = async (authToken, playlist, setDisableCreate) => {
         } 
     } catch (error) {
         console.log("addNewPlayList : Error in adding a new playlist", error.response.data.errors[0]);
+    } finally {
         setDisableCreate(false);
     }
 }

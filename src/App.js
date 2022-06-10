@@ -9,15 +9,29 @@ import {
 	LikedVideosPage,
 	WatchHistoryPage,
 	WatchLaterPage,
-	PlayListPage
+	PlayListPage,
+	SinglePlayListPage
 } from "pages";
 import { MockAPI } from "components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
 	const { isUserAuthenticated } = useAuth();
 
 	return (
 		<div className="App">
+			<ToastContainer 
+				className="toast-alerts"
+				position="bottom-right"
+				autoClose={1000} 
+				draggable
+				hideProgressBar={false}
+				pauseOnHover 
+				pauseOnFocusLoss 
+				newestOnTop={true}
+			/>
+
 			<Routes>
 				<Route path="/" element={<VideoListingPage />} />
 				<Route path="/mock" element={<MockAPI />} />
@@ -39,7 +53,7 @@ function App() {
 						<Route path="/history" element={<WatchHistoryPage />} />
 						<Route path="/watchlater" element={<WatchLaterPage />} />
 						<Route path="/playlist" element={<PlayListPage />} />
-						{/* <Route path="/playlist/:playlistId" element={<SinglePlayListPage />} /> */}
+						<Route path="/playlist/:playlistId" element={<SinglePlayListPage />} />
 					</>
 				}
 				<Route path="*" element={<NotFound404Page />} />

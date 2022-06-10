@@ -220,9 +220,7 @@ const useVideoActions = () => {
     } 
 
     // Fetch all videos in a Playlist on Single Playlist page
-    const getAllVideosInPlayList = async (event, playlist) => {
-        event.preventDefault();
-
+    const getAllVideosInPlayList = async (playlist) => {
         if(!userAuthToken) {
             navigate("/login");
         } else if(isPlayListInPlaylists(playlist.title)) {
@@ -244,7 +242,7 @@ const useVideoActions = () => {
             ? await addVideoToPlayList(userAuthToken, video, playlist._id) 
             : await removeVideoFromPlayList(userAuthToken, playlist._id, video._id);
 
-            console.log("Added a video to playlist - ", playlistResponse.playlists);
+            console.log("Added a video to playlist - ", playlistResponse.playlist);
 
             userDataDispatch({
                 type: !isVideoInPlayList(playlist._id, video._id) ? ADD_VIDEO_TO_PLAYLIST : REMOVE_VIDEO_FROM_PLAYLIST,

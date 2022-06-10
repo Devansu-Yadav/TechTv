@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 
-const CommonVideoCard = ({ videoData, category, className }) => {
-    const { removeLikedVideoOnLikedVideosPage, removeVideoFromWatchHistory, removeVideoOnWatchLaterPage } = useVideoActions();
+const CommonVideoCard = ({ videoData, category, className, playListData }) => {
+    const { removeLikedVideoOnLikedVideosPage, removeVideoFromWatchHistory, removeVideoOnWatchLaterPage, removeVideoOnSinglePlayListPage } = useVideoActions();
     const cardRef = useRef(null);
 
     const deleteVideoCardHandler = (event) => {
@@ -15,6 +15,8 @@ const CommonVideoCard = ({ videoData, category, className }) => {
             removeVideoFromWatchHistory(event, videoData);
         } else if(category === "Watch-Later") {
             removeVideoOnWatchLaterPage(event, videoData);
+        } else if (category === "Playlist") {
+            removeVideoOnSinglePlayListPage(event, playListData, videoData);
         }
         cardRef.current.classList.add("video-card-display-none");
     }

@@ -139,14 +139,14 @@ const UserDataProvider = ({ children }) => {
                 return {
                     ...state,
                     playlists: [...state.playlists.reduce((updatedPlayList, currentPlayList) => 
-                        currentPlayList._id === action.payload._id ? [...updatedPlayList, currentPlayList.videos.concat([action.payload.video])]: 
+                        currentPlayList._id === action.payload._id ? [...updatedPlayList, {...currentPlayList , videos: currentPlayList.videos.concat([action.payload.video]) }]: 
                         [...updatedPlayList, currentPlayList], [])]
                 }
             case REMOVE_VIDEO_FROM_PLAYLIST:
                 return {
                     ...state,
                     playlists: [...state.playlists.reduce((updatedPlayList, currentPlayList) => 
-                        currentPlayList._id === action.payload._id ? [...updatedPlayList, { ...currentPlayList, videos: currentPlayList.videos.filter(video => video._id !== action.playlist.video._id)}]: 
+                        currentPlayList._id === action.payload._id ? [...updatedPlayList, { ...currentPlayList, videos: currentPlayList.videos.filter(video => video._id !== action.payload.video._id) }]: 
                         [...updatedPlayList, currentPlayList], [])]
                 }
             default:

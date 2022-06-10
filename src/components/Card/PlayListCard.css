@@ -52,12 +52,12 @@
 }
 
 .video-count {
-    font-size: 1.6rem;
+    font-size: 2.8rem;
     color: var(--content-text-color);
     text-decoration: none;
 }
 
-.playlist-icon {
-    width: 2rem;
-    height: 2rem;
+.card-img .playlist-icon {
+    width: 4rem;
+    height: 4rem;
 }

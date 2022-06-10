@@ -5,10 +5,22 @@ import { faThumbsUp as faThumbsUpFilled } from "@fortawesome/free-solid-svg-icon
 import ReactPlayer from "react-player/youtube";
 import { useVideoActions } from "common/helpers";
 import { useVideosData } from "common/context";
+import { toast } from "react-toastify";
 
 const VideoListCard = ({ videoData, className }) => {
     const { isVideoInLikedVideos, toggleLikedVideo, addVideoToWatchHistory } = useVideoActions();
     const { setVideoListModal, setCurrentVideo } = useVideosData();
+
+    const shareButtonClickHandler = async (event) => {
+        event.preventDefault();
+
+        try {
+            await navigator.clipboard.writeText(videoData.videoUrl);
+            toast.info("Copied Video URL to clipboard!");
+        } catch(err) {
+            toast.error("Could not copy Video URL to clipboard!");
+        }
+    }
 
     return (
         <div className={`card space-S ${className}`}>
@@ -41,7 +53,7 @@ const VideoListCard = ({ videoData, className }) => {
                     Like
                 </button>
 
-                <button className="btn-icon btn-icon-default rounded-med space-S">
+                <button className="btn-icon btn-icon-default rounded-med space-S" onClick={(event) => shareButtonClickHandler(event)}>
                     <FontAwesomeIcon className="share-icon" icon={faShareNodes} />
                     Share
                 </button>
