@@ -6,7 +6,7 @@ import ReactPlayer from "react-player/youtube";
 import { useVideoActions } from "common/helpers";
 
 const VideoListCard = ({ videoData, className }) => {
-    const { isVideoInLikedVideos, toggleLikedVideo } = useVideoActions();
+    const { isVideoInLikedVideos, toggleLikedVideo, addVideoToWatchHistory } = useVideoActions();
 
     return (
         <div className={`card space-S ${className}`}>
@@ -16,7 +16,7 @@ const VideoListCard = ({ videoData, className }) => {
                     controls
                     width="100%"
                     height="100%"
-                    onStart={() => {}}
+                    onStart={() => addVideoToWatchHistory(videoData)}
                 />
             </div>
 

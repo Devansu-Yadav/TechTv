@@ -7,7 +7,10 @@ import {
     SAVE_USER_WATCH_LATER,
     SAVE_USER_PLAYLISTS,
     ADD_TO_LIKED_VIDEOS,
-    REMOVE_FROM_LIKED_VIDEOS
+    REMOVE_FROM_LIKED_VIDEOS,
+    ADD_TO_WATCH_HISTORY,
+    REMOVE_FROM_WATCH_HISTORY,
+    CLEAR_WATCH_HISTORY
 } from "common/constants";
 
 import { 
@@ -80,6 +83,21 @@ const UserDataProvider = ({ children }) => {
                 return {
                     ...state,
                     history: [...action.payload]
+                }
+            case ADD_TO_WATCH_HISTORY:
+                return {
+                    ...state,
+                    history: [...state.history, action.payload]
+                }
+            case REMOVE_FROM_WATCH_HISTORY:
+                return {
+                    ...state,
+                    history: [...state.history.filter(item => item._id !== action.payload._id)]
+                }
+            case CLEAR_WATCH_HISTORY:
+                return {
+                    ...state,
+                    history: []
                 }
             case SAVE_USER_WATCH_LATER:
                 return {

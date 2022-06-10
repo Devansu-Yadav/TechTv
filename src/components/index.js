@@ -11,6 +11,7 @@ import { LoginForm } from "./Login/LoginForm";
 import { SignupForm } from "./Signup/SignupForm";
 import { FormError } from "./FormError/FormError";
 import { LikedVideos } from "./LikedVideos/LikedVideos";
+import { History } from "./WatchHistory/History";
 
 export {
     SearchBar,
@@ -25,5 +26,6 @@ export {
     LoginForm,
     SignupForm,
     FormError,
-    LikedVideos
+    LikedVideos,
+    History
 };
