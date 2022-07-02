@@ -12,7 +12,11 @@ import {
     REMOVE_FROM_LIKED_VIDEOS,
     ADD_TO_WATCH_HISTORY,
     REMOVE_FROM_WATCH_HISTORY,
-    CLEAR_WATCH_HISTORY
+    CLEAR_WATCH_HISTORY,
+    ADD_NEW_PLAYLIST,
+    REMOVE_PLAYLIST,
+    ADD_VIDEO_TO_PLAYLIST,
+    REMOVE_VIDEO_FROM_PLAYLIST
 } from "common/constants";
 
 import { 
@@ -120,6 +124,30 @@ const UserDataProvider = ({ children }) => {
                 return {
                     ...state,
                     playlists: [...action.payload]
+                }
+            case ADD_NEW_PLAYLIST:
+                return {
+                    ...state,
+                    playlists: [...state.playlists, action.payload]
+                }
+            case REMOVE_PLAYLIST:
+                return {
+                    ...state,
+                    playlists: [...state.playlists.filter(item => item._id !== action.payload._id)]
+                }
+            case ADD_VIDEO_TO_PLAYLIST:
+                return {
+                    ...state,
+                    playlists: [...state.playlists.reduce((updatedPlayList, currentPlayList) => 
+                        currentPlayList._id === action.payload._id ? [...updatedPlayList, {...currentPlayList , videos: currentPlayList.videos.concat([action.payload.video]) }]: 
+                        [...updatedPlayList, currentPlayList], [])]
+                }
+            case REMOVE_VIDEO_FROM_PLAYLIST:
+                return {
+                    ...state,
+                    playlists: [...state.playlists.reduce((updatedPlayList, currentPlayList) => 
+                        currentPlayList._id === action.payload._id ? [...updatedPlayList, { ...currentPlayList, videos: currentPlayList.videos.filter(video => video._id !== action.payload.video._id) }]: 
+                        [...updatedPlayList, currentPlayList], [])]
                 }
             default:
                 return {...state}

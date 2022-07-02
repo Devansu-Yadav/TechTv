@@ -8,12 +8,15 @@ import { SideBar } from "./SideBar/SideBar";
 import { Footer } from "./Footer/Footer";
 import { VideoListCard } from "./Card/VideoListCard";
 import { CommonVideoCard } from "./Card/CommonVideoCard";
+import { PlayListCard } from "./Card/PlayListCard";
 import { LoginForm } from "./Login/LoginForm";
 import { SignupForm } from "./Signup/SignupForm";
 import { FormError } from "./FormError/FormError";
 import { LikedVideos } from "./LikedVideos/LikedVideos";
 import { History } from "./WatchHistory/History";
 import { WatchLater } from "./WatchLater/WatchLater";
+import { PlayList } from "./PlayList/PlayList";
+import { SinglePlayList } from "./PlayList/SinglePlayList";
 
 export {
     SearchBar,
@@ -26,10 +29,13 @@ export {
     Footer,
     VideoListCard,
     CommonVideoCard,
+    PlayListCard,
     LoginForm,
     SignupForm,
     FormError,
     LikedVideos,
     History,
-    WatchLater
+    WatchLater,
+    PlayList,
+    SinglePlayList
 };
