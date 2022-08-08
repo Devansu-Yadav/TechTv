@@ -17,6 +17,7 @@ import { History } from "./WatchHistory/History";
 import { WatchLater } from "./WatchLater/WatchLater";
 import { PlayList } from "./PlayList/PlayList";
 import { SinglePlayList } from "./PlayList/SinglePlayList";
+import { UserProfile } from "./Profile/UserProfile";
 
 export {
     SearchBar,
@@ -37,5 +38,6 @@ export {
     History,
     WatchLater,
     PlayList,
-    SinglePlayList
+    SinglePlayList,
+    UserProfile
 };

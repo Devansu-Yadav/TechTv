@@ -1,0 +1,19 @@
+.profile-details {
+    row-gap: 1.5rem;
+    justify-content: flex-start;
+}
+
+.account-details-heading {
+    font-size: 2.4rem;
+}
+
+.account-name, .account-email {
+    font-size: 1.6rem;
+    column-gap: 2rem;
+    color: var(--content-text-color);
+}
+
+.profile-logout-btn {
+    margin-top: 1rem;
+    color: var(--content-text-color);
+}
