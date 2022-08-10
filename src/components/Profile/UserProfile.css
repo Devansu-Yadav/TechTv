@@ -1,10 +1,13 @@
 .profile-details {
     row-gap: 1.5rem;
     justify-content: flex-start;
+    border: 1px solid var(--content-text-color);
+    padding: 2rem;
 }
 
 .account-details-heading {
     font-size: 2.4rem;
+    color: var(--content-text-color);
 }
 
 .account-name, .account-email {
@@ -16,4 +19,5 @@
 .profile-logout-btn {
     margin-top: 1rem;
     color: var(--content-text-color);
+    background-color: var(--danger-darker-color);
 }

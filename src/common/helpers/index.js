@@ -23,6 +23,7 @@ import {
     addressFormValidation
 } from "./FormValidation";
 import { useVideoActions } from "./VideoActions";
+import { useSearchVideos } from "./SearchVideosHandler";
 
 export {
     useLoginHandler,
@@ -52,5 +53,6 @@ export {
     validateAltMobileNo, 
     validatePinCode,
     addressFormValidation,
-    useVideoActions
+    useVideoActions,
+    useSearchVideos
 };

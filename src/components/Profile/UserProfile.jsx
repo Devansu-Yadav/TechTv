@@ -30,7 +30,7 @@ const UserProfile = () => {
                     </div>
 
                     { isUserAuthenticated && <Link onClick={logoutHandler} to="/login">
-                        <button className="profile-logout-btn btn-icon btn-error rounded-med">
+                        <button className="profile-logout-btn btn-icon rounded-med">
                             <FontAwesomeIcon icon={faArrowRightToBracket} />
                             Logout
                         </button>
