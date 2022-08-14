@@ -7,6 +7,7 @@ import { WatchHistoryPage } from "./HistoryPage";
 import { WatchLaterPage } from "./WatchLaterPage";
 import { PlayListPage } from "./PlayListPage";
 import { SinglePlayListPage } from "./SinglePlayListPage";
+import { UserProfilePage } from "./UserProfilePage";
 
 export {
     VideoListingPage,
@@ -17,5 +18,6 @@ export {
     WatchHistoryPage,
     WatchLaterPage,
     PlayListPage,
-    SinglePlayListPage
+    SinglePlayListPage,
+    UserProfilePage
 };

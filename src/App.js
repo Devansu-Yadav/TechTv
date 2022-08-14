@@ -10,7 +10,8 @@ import {
 	WatchHistoryPage,
 	WatchLaterPage,
 	PlayListPage,
-	SinglePlayListPage
+	SinglePlayListPage,
+	UserProfilePage
 } from "pages";
 import { MockAPI } from "components";
 import { ToastContainer } from "react-toastify";
@@ -45,6 +46,7 @@ function App() {
 						<Route path="/watchlater" element={<Navigate to="/login" />} />
 						<Route path="/playlist" element={<Navigate to="/login" />} />
 						<Route path="/playlist/:playlistId" element={<Navigate to="/login" />} />
+						<Route path="/account" element={<Navigate to="/login" />} />
 					</> :
 					<>
 						<Route path="/login" element={<Navigate to="/" />} />
@@ -54,6 +56,7 @@ function App() {
 						<Route path="/watchlater" element={<WatchLaterPage />} />
 						<Route path="/playlist" element={<PlayListPage />} />
 						<Route path="/playlist/:playlistId" element={<SinglePlayListPage />} />
+						<Route path="/account" element={<UserProfilePage />} />
 					</>
 				}
 				<Route path="*" element={<NotFound404Page />} />
